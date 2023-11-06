@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+adb shell "pm path $1" | sed 's/^package://' | tr -d '\r'

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+if [ $# -lt 2 ]; then
+  echo "$(basename $0) needs two parameters, a file listing packages to remove,"
+  echo "and a backup directory to put the apk files in"
+  echo ""
+  echo "Example usage:"
+  echo "$(basename $0) packages_removed.txt removed_packages/"
+  echo ""
+  echo "See the README.md"
+  exit 1
+fi
+
+REMOVELIST="$1"
+BACKUPDIR="$2"
+
+source ./backup $REMOVELIST $BACKUPDIR
+
+for package in $PACKAGES; do
+  adb shell "pm uninstall --user 0 $package"
+done

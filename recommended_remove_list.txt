@@ -1,0 +1,16 @@
+com.android.browser.provider
+com.android.chrome
+com.android.vending
+com.google.android.apps.books
+com.google.android.apps.docs
+com.google.android.apps.maps
+com.google.android.apps.plus
+com.google.android.googlequicksearchbox
+com.google.android.play.games
+com.google.android.talk
+com.google.android.videos
+com.google.android.youtube
+com.samsung.go
+com.samsung.video
+com.sec.android.app.samsungapps
+com.sec.android.app.sbrowser

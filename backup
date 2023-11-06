@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+if [ $# -lt 2 ]; then
+  echo "$(basename $0) needs two parameters, a file listing packages to backup,"
+  echo "and a backup directory to put the apk files in"
+  echo ""
+  echo "Example usage:"
+  echo "$(basename $0) packages.txt packages/"
+  echo ""
+  echo "See the README.md"
+  exit 1
+fi
+
+PACKAGELIST="$1"
+BACKUPDIR="$2"
+PACKAGES=$(cat $PACKAGELIST)
+
+# TODO if backupdir doesn't exist
+# cd "$BACKUPDIR" || (echo "ERROR: No such dir $BACKUPDIR" && exit)
+
+for package in $PACKAGES; do
+  PACKAGEPATH=$(./getpath "$package")
+  PACKAGEFILE=$(basename $PACKAGEPATH)
+  ./copy "$package"
+  mv $PACKAGEFILE $BACKUPDIR/
+done
